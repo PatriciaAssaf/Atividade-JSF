@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Cadastro de Usuários - Atividade 3</title>
+    <link rel="stylesheet" href="_css/main.css"/>
+</h:head>
+
+<h:body>
+    <div class="container">
+        <h1>Cadastro de Usuários</h1>
+        <p class="subtitulo">Digite um nome para cadastrar na lista.</p>
+        
+        <h:form>
+            <div class="form-group">
+                <h:outputLabel value="Nome completo:" />
+                <h:inputText id="nome" 
+                             value="#{pessoa.nome}"
+                             styleClass="form-control"
+                             required="true"
+                             requiredMessage="O campo Nome é obrigatório">
+                </h:inputText>
+            </div>
+            
+            <h:commandButton value="Cadastrar" 
+                             styleClass="btn-cadastrar"
+                             action="#{pessoa.adicionarNome}">
+            </h:commandButton>
+        </h:form>
+        
+        <!-- Lista de nomes cadastrados -->
+        <div class="lista-nomes" rendered="#{not empty pessoa.listaNomes}">
+            <h3>📋 Lista de Nomes Cadastrados:</h3>
+            <ul>
+                <ui:repeat value="#{pessoa.listaNomes}" var="nomeItem">
+                    <li>👤 #{nomeItem}</li>
+                </ui:repeat>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>© 2026 - Atividade 3 | Cadastro de Usuários</p>
+        </footer>
+    </div>
+</h:body>
+</html>
